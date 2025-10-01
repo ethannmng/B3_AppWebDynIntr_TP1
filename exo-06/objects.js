@@ -23,7 +23,9 @@ console.log(obj.nestedProp.key);
 
 // 4. Lecture des valeurs de l'objet avec une boucle for in
 console.log("Lecture d'un objet via for..in");
-// [CODE]
+for (let key in obj) {
+    console.log(`obj[${key}] :`, obj[key]);
+}
 
 // 5. Filtrage de l'objet pour retirer les valeurs nulles
 console.log("Objet sans props nulles : ");
