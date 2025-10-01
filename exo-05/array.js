@@ -22,8 +22,11 @@ console.log("Ajout au début :");
 console.log(arr);
 
 // 5. Modification de toutes les valeurs du tableau
+arr.map((value, index) => {
+    arr[index] = value + 1;
+});
 console.log("Modification de chaque valeur du tableau :");
-// [CODE]
+console.log(arr);
 
 // 6. Filtrage pour ne garder que les valeurs numériques
 console.log("Ne garde que les valeurs numériques :");
