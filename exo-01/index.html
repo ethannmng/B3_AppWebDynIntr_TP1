@@ -45,7 +45,10 @@
 
     <!-- 1. Alerte bouton -->
     <script type="text/javascript">
-        /* -> Votre code JS ici <- */
+        const btn = document.getElementById('btn');
+        btn.addEventListener('click', () => {
+            alert('Vous avez cliqué sur le bouton !');
+        });
     </script>
 
     <!-- 2. Texte temps réel -->
