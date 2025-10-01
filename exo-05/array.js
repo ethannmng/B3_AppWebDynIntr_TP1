@@ -12,9 +12,9 @@ console.log('Ajout via écriture d\'index :');
 console.log(arr);
 
 // 3. Ajout à la fin du tableau
-// [CODE]
+arr.push(2)
 console.log('Ajout à la fin :');
-// [CODE]
+console.log(arr);
 
 // 4. Ajout au début du tableau
 // [CODE]
