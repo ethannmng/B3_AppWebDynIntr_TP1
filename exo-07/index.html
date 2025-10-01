@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculatrice</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
+        input {
+        @apply border border-orange-950 rounded-lg px-2 py-1 outline-none w-16;
+      }
+    </style>
+</head>
+
+<body class="font-mono py-24 bg-orange-50 text-orange-950 h-screen flex flex-col justify-center items-center">
+    <div class="container mx-auto px-4">
+        <h1 class="text-3xl tracking-widest font-light uppercase text-center mb-8">
+            Calculatrice
+        </h1>
+        <form class="flex flex-col justify-center items-center">
+            <div class="flex items-center gap-2">
+
+                <!-- Groupe des inputs -->
+                <div class="calculator flex gap-2">
+                    <input type="number" placeholder="0" />
+                    <span>+</span>
+                    <input type="number" placeholder="0" />
+                </div>
+
+                <span>=</span>
+
+                <!-- Affichage du résultat -->
+                <input id="result" type="" class="!w-[130px]" readonly placeholder="Résultat..." />
+            </div>
+
+            <div class="mt-4 flex gap-4">
+                <button type="sumbit"
+                    class="bg-orange-950 text-orange-50 rounded-lg px-6 py-3 uppercase text-sm flex-1">
+                    Calculer
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <script type="text/javascript">
+        const form = document.querySelector("form");
+        const inputs = document.querySelectorAll(".calculator input");
+        const resultInput = document.getElementById("result");
+
+        let result = (a, b) => a + b;
+
+        form.addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            const num1 = parseFloat(inputs[0].value) || 0;
+            const num2 = parseFloat(inputs[1].value) || 0;
+
+            resultInput.value = result(num1, num2);
+        });
+    </script>
+</body>
+
+</html>
