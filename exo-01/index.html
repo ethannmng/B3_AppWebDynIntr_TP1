@@ -64,7 +64,43 @@
 
     <!-- 3. Jeu -->
     <script type="text/javascript">
-        /* -> Votre code JS ici <- */
+        const gameContainer = document.getElementById('game-container');
+        const gameBtn = document.getElementById('game-btn');
+
+        const texts = [
+            "Tu ne m'attraperas pas !",
+            "Essaie encore !",
+            "Presque !",
+            "Tu es rapide !",
+            "Je suis insaisissable !"
+        ];
+
+        function moveButton() {
+            // Récupération des dimensions du conteneur et du bouton
+            const containerRect = gameContainer.getBoundingClientRect();
+            const btnRect = gameBtn.getBoundingClientRect();
+
+            // Calcul des limites pour que le bouton reste dans le conteneur
+            const maxX = containerRect.width - btnRect.width;
+            const maxY = containerRect.height - btnRect.height;
+
+            // Calcul de nouvelles positions aléatoires
+            const randomX = Math.floor(Math.random() * maxX);
+            const randomY = Math.floor(Math.random() * maxY);
+
+            // Changement de la position du bouton
+            gameBtn.style.left = `${randomX}px`;
+            gameBtn.style.top = `${randomY}px`;
+
+            // Changement du texte du bouton
+            const randomText = texts[Math.floor(Math.random() * texts.length)];
+            gameBtn.textContent = randomText;
+        }
+
+        gameBtn.addEventListener('mouseover', moveButton);
+        gameBtn.addEventListener('click', () => {
+            alert('Bravo, tu as réussi à cliquer sur le bouton !');
+        });
     </script>
 </body>
 
