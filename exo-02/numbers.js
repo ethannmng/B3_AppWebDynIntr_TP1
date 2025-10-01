@@ -7,11 +7,11 @@ let d = parseFloat("De toute évidence, je ne suis pas un nombre");
 let e = parseInt("42");
 let f = parseFloat("42");
 
-console.log(a);
-console.log(b);
-console.log(c);
-console.log(d);
-
-// Exemple mission 2
-console.log(e);
-console.log(f);
+const list = [a, b, c, d, e, f];
+for (let i = 0; i < list.length; i++) {
+    if (isNaN(list[i])) {
+        console.log(list[i] + " n'est pas un nombre valide");
+    } else {
+        console.log(list[i] + " est un nombre valide");
+    }
+}
