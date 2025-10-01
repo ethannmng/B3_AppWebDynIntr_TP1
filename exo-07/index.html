@@ -24,9 +24,14 @@
 
                 <!-- Groupe des inputs -->
                 <div class="calculator flex gap-2">
-                    <input type="number" placeholder="0" />
-                    <span>+</span>
-                    <input type="number" placeholder="0" />
+                    <input type="number" placeholder="0" class="number-input" />
+                    <select class="operator-select">
+                        <option value="add">+</option>
+                        <option value="sub">-</option>
+                        <option value="mul">x</option>
+                        <option value="div">/</option>
+                    </select>
+                    <input type="number" placeholder="0" class="number-input" />
                 </div>
 
                 <span>=</span>
@@ -36,8 +41,12 @@
             </div>
 
             <div class="mt-4 flex gap-4">
-                <button type="sumbit"
-                    class="bg-orange-950 text-orange-50 rounded-lg px-6 py-3 uppercase text-sm flex-1">
+                <button type="button" id="addOperation"
+                    class="bg-orange-950 text-orange-50 rounded-lg px-8 py-2 uppercase text-sm flex-1">
+                    Ajouter une opération
+                </button>
+                <button type="submit"
+                    class="bg-orange-950 text-orange-50 rounded-lg px-2 py-2 uppercase text-sm flex-1">
                     Calculer
                 </button>
             </div>
@@ -46,18 +55,57 @@
 
     <script type="text/javascript">
         const form = document.querySelector("form");
-        const inputs = document.querySelectorAll(".calculator input");
+        const calculatorContainer = document.querySelector(".calculator");
         const resultInput = document.getElementById("result");
+        const addOperation = document.getElementById("addOperation");
 
-        let result = (a, b) => a + b;
+        const operations = {
+            add: (a, b) => a + b,
+            sub: (a, b) => a - b,
+            mul: (a, b) => a * b,
+            div: (a, b) => (b === 0 ? NaN : a / b),
+        };
+
+        function createOperationSegment() {
+            const segment = document.createElement("div");
+            segment.classList.add("flex", "gap-2");
+            segment.innerHTML = `
+                <select class="operator-select">
+                    <option value="add">+</option>
+                    <option value="sub">-</option>
+                    <option value="mul">x</option>
+                    <option value="div">÷</option>
+                </select>
+                <input type="number" placeholder="0" class="number-input" />
+            `;
+            return segment;
+        }
+
+        addOperation.addEventListener("click", () => {
+            const newSegment = createOperationSegment();
+            calculatorContainer.appendChild(newSegment);
+        });
 
         form.addEventListener("submit", (event) => {
             event.preventDefault();
 
-            const num1 = parseFloat(inputs[0].value) || 0;
-            const num2 = parseFloat(inputs[1].value) || 0;
+            const numberInputs = calculatorContainer.querySelectorAll(".number-input");
+            const operatorSelects = calculatorContainer.querySelectorAll(".operator-select");
 
-            resultInput.value = result(num1, num2);
+            let total = parseFloat(numberInputs[0].value) || 0;
+
+            for (let i = 0; i < operatorSelects.length; i++) {
+                const operator = operatorSelects[i].value;
+                const nextNumber = parseFloat(numberInputs[i + 1].value) || 0;
+                const operationFunc = operations[operator];
+                total = operationFunc(total, nextNumber);
+            }
+
+            if (isNaN(total)) {
+                resultInput.value = "Erreur (div/0)";
+            } else {
+                resultInput.value = total;
+            }
         });
     </script>
 </body>
