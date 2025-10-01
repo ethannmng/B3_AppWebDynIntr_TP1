@@ -29,4 +29,9 @@ for (let key in obj) {
 
 // 5. Filtrage de l'objet pour retirer les valeurs nulles
 console.log("Objet sans props nulles : ");
-// [CODE]
+const filteredObj = Object.fromEntries(
+    Object.entries(obj).filter(
+        ([key, value]) => value !== null
+    )
+);
+console.log(filteredObj);
