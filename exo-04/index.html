@@ -45,7 +45,20 @@
     </div>
 
     <script type="text/javascript">
+        const form = document.querySelector("form");
+        const inputs = document.querySelectorAll(".calculator input");
+        const resultInput = document.getElementById("result");
 
+        let result = (a, b) => a + b;
+
+        form.addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            const num1 = parseFloat(inputs[0].value) || 0;
+            const num2 = parseFloat(inputs[1].value) || 0;
+
+            resultInput.value = result(num1, num2);
+        });
     </script>
 </body>
 
