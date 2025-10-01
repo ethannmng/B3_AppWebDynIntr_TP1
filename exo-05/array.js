@@ -17,9 +17,9 @@ console.log('Ajout à la fin :');
 console.log(arr);
 
 // 4. Ajout au début du tableau
-// [CODE]
+arr.unshift(-1);
 console.log("Ajout au début :"); 
-// [CODE]
+console.log(arr);
 
 // 5. Modification de toutes les valeurs du tableau
 console.log("Modification de chaque valeur du tableau :");
