@@ -46,6 +46,7 @@
     <!-- 1. Alerte bouton -->
     <script type="text/javascript">
         const btn = document.getElementById('btn');
+
         btn.addEventListener('click', () => {
             alert('Vous avez cliqué sur le bouton !');
         });
@@ -53,7 +54,12 @@
 
     <!-- 2. Texte temps réel -->
     <script type="text/javascript">
-        /* -> Votre code JS ici <- */
+        const textInput = document.getElementById('text-input');
+        const textDisplay = document.getElementById('text-display');
+
+        textInput.addEventListener('input', () => {
+            textDisplay.textContent = textInput.value;
+        });
     </script>
 
     <!-- 3. Jeu -->
