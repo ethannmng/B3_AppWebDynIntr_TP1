@@ -2,24 +2,24 @@ console.log("*** OBJETS ***");
 
 const obj = {
   initialProp: "My initial property",
-  emptyProp: null,
+  emptyProp: null
 };
 console.log("Objet initial : ", obj);
 
 
 // 1. Ajout d'une propriété writtenProp
-// [CODE] 
+obj.writtenProp = "written";    
 console.log("Ajout d'une propriété : ");
-// console.log(obj);
+console.log(obj);
 
 // 2. Ajout d'une propriété imbriquée nestedProp
-// [CODE]
+obj.nestedProp = { key: "value" };
 console.log("Ajout d'une propriété imbriquée : ");
-// console.log(obj);
+console.log(obj);
 
 // 3. Lecture de la propriété imbriquée
 console.log("Lecture d'une propriété imbriquée : ");
-// [CODE]
+console.log(obj.nestedProp.key);
 
 // 4. Lecture des valeurs de l'objet avec une boucle for in
 console.log("Lecture d'un objet via for..in");
