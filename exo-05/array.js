@@ -7,9 +7,9 @@ console.log('Initialisation avec valeur initiale :');
 console.log(arr);
 
 // 2. Ecriture en index
-// [CODE]
+arr[1] = 1;
 console.log('Ajout via écriture d\'index :');
-// [CODE]
+console.log(arr);
 
 // 3. Ajout à la fin du tableau
 // [CODE]
